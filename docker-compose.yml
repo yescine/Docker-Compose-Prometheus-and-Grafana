@@ -68,7 +68,6 @@ services:
       org.label-schema.group: "monitoring"
 
   cadvisor:
-    image: Docker-cadvisor
     container_name: cadvisor
     build: 
       context: ./
