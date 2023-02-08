@@ -1,7 +1,7 @@
 FROM golang:1.13-buster AS builder
 ARG VERSION
 
-RUN apt-get update && apt-get install make git bash gcc && mkdir -p $GOPATH/src/github.com/google && git clone https://github.com/google/cadvisor.git $GOPATH/src/github.com/google/cadvisor
+RUN apt-get update && apt-get install -y make git bash gcc && mkdir -p $GOPATH/src/github.com/google && git clone https://github.com/google/cadvisor.git $GOPATH/src/github.com/google/cadvisor
 
 WORKDIR $GOPATH/src/github.com/google/cadvisor
 RUN git fetch --tags && git checkout $VERSION && make build && cp ./cadvisor /
