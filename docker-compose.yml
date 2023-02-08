@@ -68,8 +68,13 @@ services:
       org.label-schema.group: "monitoring"
 
   cadvisor:
-    image: gcr.io/google-containers/cadvisor:latest
+    image: Docker-cadvisor
     container_name: cadvisor
+    build: 
+      context: ./
+      dockerfile: ./Dockerfile-cadvisor
+      args:
+        VERSION: v0.35.0
     volumes:
       - /:/rootfs:ro
       - /var/run:/var/run:rw
